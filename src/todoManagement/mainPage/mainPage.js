@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ListPage from '../listPage/listPage';
-// import { getAllTodosStart,addNewTodoStart } from '../todoAction';
+import { getAllTodoStart, addNewTodoStart } from '../todoAction';
 
 class MainPage extends React.Component {
   constructor(props) {
@@ -11,9 +11,16 @@ class MainPage extends React.Component {
       newItemName: ''
     };
   }
-  // componentDidMount() {
-  //   this.props.getAllTodosStart();
-  // }
+  componentDidMount() {
+    this.props.getAllTodoStart();
+  }
+  componentWillReceiveProps(newProps) {
+    this.setState({ TodoItems: newProps.todos });
+  }
+  onNewNameInputChanged = event => {
+    this.setState({ newItemName: event.target.value });
+  };
+
   onAddButtonClicked = () => {
     this.setState({
       isAdding: true
@@ -24,9 +31,6 @@ class MainPage extends React.Component {
       name: this.state.newItemName,
       status: 'todo'
     });
-  };
-
-  onCrossButtonClicked = () => {
     this.setState({ isAdding: false });
   };
 
@@ -37,9 +41,11 @@ class MainPage extends React.Component {
           <div>LOGO</div>
           <div hidden={!this.state.isAdding}>
             Name
-            <input />
+            <input
+              value={this.state.newItemName}
+              onChange={this.onNewNameInputChanged}
+            />
             <button onClick={this.onOkButtonClicked}>OK</button>
-            <button onClick={this.onCrossButtonClicked}>X</button>
           </div>
           <button onClick={this.onAddButtonClicked}>Add New</button>
         </div>
@@ -54,7 +60,10 @@ const mapStateToProps = state => {
   return {};
 };
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  getAllTodoStart,
+  addNewTodoStart
+};
 
 export default connect(
   mapStateToProps,
