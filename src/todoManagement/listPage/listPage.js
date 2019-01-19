@@ -5,10 +5,10 @@ import TodoItem from '../todoItem/todoItem';
 class ListPage extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { todoItems: props.todos };
+    this.state = { todoItems: props.todoItems };
   }
   componentWillReceiveProps(newProps) {
-    this.setState({ todoItems: newProps.todos });
+    this.setState({ todoItems: newProps.todoItems });
   }
 
   render() {
@@ -18,8 +18,8 @@ class ListPage extends React.Component {
     return (
       <div>
         11111
-        {ListPage.map(todo => {
-          return <TodoItem key={todo.id} todoItem={todo} />;
+        {ListPage.map(aaa => {
+          return <TodoItem key={aaa.id} todoItem={aaa} />;
         })}
       </div>
     );
@@ -29,7 +29,7 @@ class ListPage extends React.Component {
 const mapStateToProps = store => {
   console.log(`store`, store);
   return {
-    todos: store.todoItems.todos
+    todoItems: store.todoItems.todoItems
   };
 };
 const mapDispatchToProps = {};

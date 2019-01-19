@@ -5,7 +5,7 @@ class TodoItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      TodoItem: props.todo
+      TodoItem: props.todoItem
     };
   }
 
@@ -28,7 +28,7 @@ class TodoItem extends React.Component {
 
 const mapStateToProps = store => {
   return {
-    TodoItem: store.todos.TodoItem
+    // TodoItem: store.todos.TodoItem
   };
 };
 const mapDispatchToProps = {};

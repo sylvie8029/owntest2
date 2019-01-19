@@ -50,7 +50,7 @@ class MainPage extends React.Component {
           <button onClick={this.onAddButtonClicked}>Add New</button>
         </div>
         <div>
-          <ListPage />
+          <ListPage type="todo" />
         </div>
       </div>
     );

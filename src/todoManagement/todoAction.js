@@ -4,7 +4,7 @@ import { BaseUrl } from '../config/common';
 
 export function getAllTodoStart() {
   return dispatch => {
-    axios.get(`${BaseUrl}/todos`).then(
+    axios.get(`${BaseUrl}/aaa`).then(
       res => {
         if (res.status === 200) {
           dispatch(getAllTodoSuccess(res.data));
